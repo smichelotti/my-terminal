@@ -46,9 +46,6 @@
             "background": "#9ec3f0",
             "properties": {
               "template": "{{.EnvironmentName}} | {{.Name}}",
-              "xdisplay_environment_name": true,
-              "display_id": false,
-              "display_name": true,
               "prefix": " \uFD03 ",
               "include_folders": [
                 "*\\\\az"
