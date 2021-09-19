@@ -12,6 +12,7 @@ function Import-Module-With-Measure {
 
 Import-Module-With-Measure Terminal-Icons
 Import-Module-With-Measure PSReadLine
+Import-Module-With-Measure MagicTooltips
 
 
 $env:AZ_ENABLED = $false
@@ -23,7 +24,6 @@ Set-PSReadlineKeyHandler -Chord Tab -Function MenuComplete
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward  
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
-Import-Module MagicTooltips
 
 
 #dotnet completion

@@ -10,13 +10,15 @@ Install [Oh My Posh](https://ohmyposh.dev/) (I prefer [winget](https://ohmyposh.
 
 `winget install JanDeDobbeleer.OhMyPosh`
 
-### Install Terminal-Icons
+### Install PowerShell modules
 
-`Install-Module -Name Terminal-Icons -Repository PSGallery`
+These are the PowerShell modules I use that the $profile is dependent on.
 
-### Install PSReadLine
-
-`Install-Module PSReadLine -AllowPrerelease -Force`
+```powershell
+Install-Module -Name Terminal-Icons -Repository PSGallery
+Install-Module PSReadLine -AllowPrerelease -Force
+Install-Module -Name MagicTooltips -Repository PSGallery
+```
 
 ### Custom Oh My Posh Theme
 
@@ -26,20 +28,22 @@ Install [Oh My Posh](https://ohmyposh.dev/) (I prefer [winget](https://ohmyposh.
 The custom posh theme ([paradox-michelotti.omp.json](paradox-michelotti.omp.json)) is specified in the PowerShell $profile file ([Microsoft.PowerShell_profile](Microsoft.PowerShell_profile)).
 
 Copy Microsoft.PowerShell_profile.ps1 from here to the $profile location:
-```
+
+```powershell
 cp .\Microsoft.PowerShell_profile.ps1 $profile
 ```
 
 Copy paradox-michelotti.omp.json to a shared location (this much match location in $profile):
-```
+
+```powershell
  cp .\paradox-michelotti.omp.json ~/Dropbox/utils/terminal/paradox-michelotti.omp.json
 ```
 
 This must match location in $profile file:
 
-`Set-PoshPrompt -Theme ~/Dropbox/utils/terminal/paradox-michelotti.omp.json`
-
-
+```powershell
+oh-my-posh --init --shell pwsh --config ~/Dropbox/utils/terminal/paradox-michelotti.omp.json | Invoke-Expression
+```
 
 #### Windows Terminal settings.json file
 
