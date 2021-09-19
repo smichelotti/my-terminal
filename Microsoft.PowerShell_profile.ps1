@@ -10,14 +10,12 @@ function Import-Module-With-Measure {
 }
 
 
-Import-Module-With-Measure posh-git
-Import-Module-With-Measure oh-my-posh
 Import-Module-With-Measure Terminal-Icons
 Import-Module-With-Measure PSReadLine
 
 
 $env:AZ_ENABLED = $false
-Set-PoshPrompt -Theme ~/Dropbox/utils/terminal/paradox-michelotti.omp.json
+oh-my-posh --init --shell pwsh --config ~/Dropbox/utils/terminal/paradox-michelotti.omp.json | Invoke-Expression
 
 # menu complete using TAB instead of CTRL+SPACE
 Set-PSReadlineKeyHandler -Chord Tab -Function MenuComplete  

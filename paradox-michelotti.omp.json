@@ -45,7 +45,7 @@
             "foreground": "#000000",
             "background": "#9ec3f0",
             "properties": {
-              "template": "{{.EnvironmentName}}",
+              "template": "{{.EnvironmentName}} | {{.Name}}",
               "xdisplay_environment_name": true,
               "display_id": false,
               "display_name": true,
