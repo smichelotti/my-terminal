@@ -18,13 +18,7 @@ Import-Module-With-Measure MagicTooltips
 $env:AZ_ENABLED = $false
 oh-my-posh --init --shell pwsh --config ~/Dropbox/utils/terminal/paradox-michelotti.omp.json | Invoke-Expression
 
-# menu complete using TAB instead of CTRL+SPACE
-Set-PSReadlineKeyHandler -Chord Tab -Function MenuComplete  
-# up&down arrow for history search
-Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward  
-Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
-
-
+### PSReadLine options ###
 
 #dotnet completion
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {  
@@ -35,23 +29,14 @@ Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
 }
 
 
-function gac() {
-    git add .
-    git commit -m $args[0]
-}
+### PSReadLine Options below ###
 
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -EditMode Windows
 
-### PSReadLine Options below:
-
-# Searching for commands with up/down arrow is really handy.  The
-# option "moves to end" is useful if you want the cursor at the end
-# of the line while cycling through history like it does w/o searching,
-# without that option, the cursor will remain at the position it was
-# when you used up arrow, which can be useful if you forget the exact
-# string you started the search on.
-Set-PSReadLineOption -HistorySearchCursorMovesToEnd
-Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
-Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+# menu complete using TAB instead of CTRL+SPACE
+#Set-PSReadlineKeyHandler -Chord Tab -Function MenuComplete  
 
 # This key handler shows the entire or filtered history using Out-GridView. The
 # typed text is used as the substring pattern for filtering. A selected command
@@ -108,4 +93,11 @@ Set-PSReadLineKeyHandler -Key F7 `
         [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
         [Microsoft.PowerShell.PSConsoleReadLine]::Insert(($command -join "`n"))
     }
+}
+
+### git utility functions ###
+
+function gac() {
+    git add .
+    git commit -m $args[0]
 }
