@@ -95,6 +95,30 @@ Set-PSReadLineKeyHandler -Key F7 `
     }
 }
 
+### Azure functions for Windows Terminal ###
+
+function Set-AzureCloud() {
+  param([string]$cloud, [string]$img)
+
+  az cloud set --name $cloud
+
+  # Set background for Windows Terminal
+  $settingsPath = "$env:LocalAppData\Packages\Microsoft.WindowsTerminalPreview_*\LocalState\settings.json"
+  $json = (Get-Content $settingsPath -Raw) | ConvertFrom-Json -Depth 32
+  $psProfile = $json.profiles.list.Where({$_.name -eq 'PowerShell'})
+  $($psProfile).backgroundImage = "$home\Dropbox\utils\terminal\$img"
+  $json | ConvertTo-Json -Depth 32 | Set-Content (Get-Item $settingsPath).FullName
+}
+
+function Set-AzPublic {
+  Set-AzureCloud 'AzureCloud' 'azure-tr-236x225.png'
+}
+
+function Set-AzGov {
+  Set-AzureCloud 'AzureUSGovernment' 'ages-tr-236x225.png'
+}
+
+
 ### git utility functions ###
 
 function gac() {
