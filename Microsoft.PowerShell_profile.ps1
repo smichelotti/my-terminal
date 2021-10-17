@@ -12,7 +12,7 @@ function Import-Module-With-Measure {
 
 Import-Module-With-Measure Terminal-Icons
 Import-Module-With-Measure PSReadLine
-Import-Module-With-Measure MagicTooltips
+Import-Module-With-Measure z
 
 
 $env:AZ_ENABLED = $false
