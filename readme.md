@@ -20,6 +20,10 @@ Install-Module PSReadLine -AllowPrerelease -Force
 Install-Module -Name MagicTooltips -Repository PSGallery
 ```
 
+### Cascadia Code Font
+
+Download [Caskaydia Cove Nerd Font here](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/CascadiaCode.zip) and install the ttf fonts on Windows.
+
 ### Custom Oh My Posh Theme
 
 <!-- Locate your PowerShell profile file by running `$profile` at a PowerShell prompt. Note the directory - it will be something like: `C:\Users\<username>\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`. Copy the `PoshThemes` folder (which contains paradox-michelotti.psm1) into this folder - so you'll have something like this:
@@ -42,7 +46,7 @@ cp .\paradox-michelotti.omp.json ~/Dropbox/utils/terminal/paradox-michelotti.omp
 This must match location in $profile file:
 
 ```powershell
-oh-my-posh --init --shell pwsh --config ~/Dropbox/utils/terminal/paradox-michelotti.omp.json | Invoke-Expression
+oh-my-posh init pwsh --config ~/Dropbox/utils/terminal/paradox-michelotti.omp.json | Invoke-Expression
 ```
 
 #### Windows Terminal settings.json file

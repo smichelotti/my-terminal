@@ -125,3 +125,13 @@ function gac() {
     git add .
     git commit -m $args[0]
 }
+
+function openrepo() {
+    $repourl = git remote get-url --all origin
+    start-process $repourl
+}
+
+function cpdirpath() {
+    $dir = get-location
+    set-clipboard $dir.path
+}
